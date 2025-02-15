@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pros & Cons</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+        body {
+            background-color: #ffe3e3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: 'Quicksand', sans-serif;
+            color: #ff5f85;
+            margin: 0;
+            overflow-x: hidden; /* Prevents horizontal scrolling */
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            max-width: 80%;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .list {
+            background: #ff5e78;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: none;
+            width: 250px;
+            color: white;
+        }
+        
+        .list h2 {
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .list ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .list ul li {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        
+        .gif-container img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .button {
+            background: #ff88aa;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: 0.3s;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .button:hover {
+            background: #ff5f85;
+        }
+        /* Audio Button */
+        .audio-button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: #ff88aa;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>It's hard ik so here's a pros and cons list to help you make your decision</h1>
+    <p>
+         
+    </p>
+    <div class="container">
+        <div class="list">
+            <h2>Pros</h2>
+            <ul>
+                <li>We would just be catching up, nothing more</li>
+                <li>Free matcha/food </li>
+                <li>You get to hang out with a cool, fun, nonchalant guy</li>
+                <li>It will be a good time</li>
+                <li>Completely non-committal, there are no strings attached</li>
+                
+            </ul>
+        </div>
+        
+        <div class="gif-container">
+            <img src="{{ url_for('static', filename='images/question.gif') }}" alt="Cute GIF">
+        </div>
+        
+        <div class="list">
+            <h2>Cons</h2>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li>Hanging out with your ex 🤢</li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <div class="button-container">
+        <button class="button" onclick="goBack()">⬅ Go Back</button>
+    </div>
+    <script>
+        function toggleAudio() {
+            let audio = document.getElementById("bg-music");
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+        function goBack() {
+            window.location.href = "/choice";
+        }
+
+    </script>
+</body>
+</html>

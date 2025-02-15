@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just for You, Mirai 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+        body {
+            background-color: #ffe3e3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: 'Quicksand', sans-serif;
+            color: #ff5f85;
+            margin: 0;
+            overflow-x: hidden; /* Prevents horizontal scrolling */
+            overflow-y: auto;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 10px;
+            font-weight: 400;
+        }
+
+        .gif-container {
+            margin-top: 20px;
+        }
+
+        .gif-container img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            border: 3px solid #ffb6c1;
+        }
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .button {
+            background: #ff88aa;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: 0.3s;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .button:hover {
+            background: #ff5f85;
+        }
+        /* Audio Button */
+        .audio-button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: #ff88aa;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>But i still miss you lowkey :,(</h1>
+    <p>
+        I am curious to know how you are :)
+    </p>
+
+    <div class="gif-container">
+        <img src="{{ url_for('static', filename='images/sad.gif') }}" alt="Adorable Valentine's GIF">
+    </div>
+
+    <button class="audio-button" onclick="toggleAudio()">🎵 Play Music</button>
+    <div class="button-container">
+        <button class="button" onclick="goBack()">⬅ Go Back</button>
+        <button class="button" onclick="redirectToNext()">➡ Next Page</button>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="{{ url_for('static', filename='audio/cutebg.mp3') }}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function toggleAudio() {
+            let audio = document.getElementById("bg-music");
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+        function goBack() {
+            window.location.href = "/me";
+        }
+        function redirectToNext() {
+            window.location.href = "/choice";
+        }
+
+    </script>
+</body>
+</html>

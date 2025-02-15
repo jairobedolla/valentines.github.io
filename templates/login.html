@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day Mirai</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
+        body {
+            background-color: #ffe3e3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: 'Parisienne', cursive;
+            color: #ff88aa;
+            margin: 0;
+            overflow-x: hidden; /* Prevents horizontal scrolling */
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        /* Background Hearts */
+        .heart {
+            position: absolute;
+            color: white;
+            font-size: 40px;
+            opacity: 0.7;
+            animation: floatHearts 5s linear infinite;
+        }
+
+        @keyframes floatHearts {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            animation: floatText 3s infinite ease-in-out;
+            line-height: 1.2;
+        }
+        
+        @keyframes floatText {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .gif-container {
+            margin-top: 20px;
+        }
+        
+        .gif-container img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            border: 3px solid #ffb6c1;
+        }
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .button {
+            background: #ff88aa;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #ff5f85;
+        }
+
+        /* Audio Button */
+        .audio-button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: #ff88aa;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Valentine's Day<br> mirai !!</h1>
+    
+    <div class="gif-container">
+        <img src="{{ url_for('static', filename='images/pompom.gif') }}" alt="Cute Valentine's GIF">
+    </div>
+
+    <button class="audio-button" onclick="toggleAudio()">🎵 Play Music</button>
+    <div class="button-container">
+        <button class="button" onclick="redirectToNext()">➡ Next Page</button>
+    </div>
+
+
+    <audio id="bg-music" loop>
+        <source src="{{ url_for('static', filename='audio/cutebg.mp3') }}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Play/Pause Audio Function
+        function toggleAudio() {
+            let audio = document.getElementById("bg-music");
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+        
+        function redirectToNext() {
+            window.location.href = "/next";
+        }
+
+        // Function to Create Floating Hearts
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💝";
+            heart.style.left = Math.random() * 100 + "vw";  // Random X position
+            heart.style.animationDuration = (Math.random() * 3 + 2) + "s";  // Random speed
+            document.body.appendChild(heart);
+
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        // Generate Hearts Randomly
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
